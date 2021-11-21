@@ -76,7 +76,7 @@
       }
 
       const w = 720;
-      const h = 440;
+      const h = 400;
 
       const rectColor = 'green';
 
@@ -108,7 +108,7 @@
 
           console.log(scaleY(data.data[9][1]));
 
-          var svg = d3.select('#svg_container').append('svg').attr('width',w+80).attr('height',h+60);
+          var svg = d3.select('#svg_container').append('svg').attr('width',w+80).attr('height',h+70);
 
           var xAxis = d3.axisBottom().scale(scaleX);
 
@@ -122,6 +122,9 @@
 
           svg.append('text').text('Gross Domestic Product').attr('transform', 'rotate(-90)')
               .attr('x','-300').attr('y','85').style('font-size','20px').style('fill','white');
+
+          svg.append('text').text('More Information: http://www.bea.gov/national/pdf/nipaguid.pdf')
+              .attr('x','360').attr('y',h+60).style('font-size','15px').style('fill','white');
 
           svg.selectAll('rect').data(data.data).enter().append('rect')
               .attr('x', (d,i) => scaleX(years[i])+60).attr('y', (d,i) => scaleY(d[1])+20).attr('fill',rectColor)
